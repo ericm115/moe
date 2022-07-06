@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default class ContactCard extends React.Component {
   state = {
@@ -26,7 +27,7 @@ export default class ContactCard extends React.Component {
     return (
       <>
         {this.state.person.map((item) => (
-          <Card style={{ width: "18rem", margin: "4rem" }}>
+          <Card style={{ width: "18rem", margin: "4rem" }} key={uuidv4()}>
             <Card.Body>
               <Card.Title>{item.name}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">
