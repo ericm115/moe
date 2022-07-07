@@ -9,7 +9,7 @@ export default class ContactCard extends React.Component {
   };
 
   async componentDidMount() {
-    const url = "https://first-api-attempt.jwdev.workers.dev/todos/2";
+    const url = "https://first-api-attempt.jwdev.workers.dev/contacts";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ person: data, loading: false });
@@ -21,7 +21,7 @@ export default class ContactCard extends React.Component {
     }
 
     if (!this.state.person) {
-      return <div>didn't get a person</div>;
+      return <div>Did not load!</div>;
     }
 
     return (
