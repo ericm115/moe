@@ -5,14 +5,14 @@ import { v4 as uuidv4 } from "uuid";
 export default class ContactCard extends React.Component {
   state = {
     loading: true,
-    person: null,
+    contactList: null,
   };
 
   async componentDidMount() {
     const url = "https://first-api-attempt.jwdev.workers.dev/contacts";
     const response = await fetch(url);
     const data = await response.json();
-    this.setState({ person: data, loading: false });
+    this.setState({ contactList: data, loading: false });
   }
 
   render() {
@@ -20,13 +20,13 @@ export default class ContactCard extends React.Component {
       return <div>loading...</div>;
     }
 
-    if (!this.state.person) {
+    if (!this.state.contactList) {
       return <div>Did not load!</div>;
     }
 
     return (
       <>
-        {this.state.person.map((item) => (
+        {this.state.contactList.map((item) => (
           <Card style={{ width: "18rem", margin: "4rem" }} key={uuidv4()}>
             <Card.Body>
               <Card.Title>{item.name}</Card.Title>
